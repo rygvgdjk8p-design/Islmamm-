@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тарихи детективтер — Сақтар мен скифтер</title>
+<style>
+:root{--bg:#10110f;--panel:#1b1d19;--gold:#e6bd65;--cream:#f7f0df;--muted:#b9b4a6;--green:#8ec7a0;--red:#ed9690}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 0%,#39301d 0,#171813 36%,#10110f 75%);color:var(--cream);font-family:system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+.wrap{max-width:980px;margin:auto;padding:24px 16px 48px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:26px}.brand{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:800}.pill{border:1px solid #655637;border-radius:99px;padding:8px 12px;color:var(--muted);font-size:12px}
+.hero{border:1px solid #5c4b2d;border-radius:24px;padding:clamp(22px,5vw,46px);background:linear-gradient(125deg,rgba(66,52,27,.92),rgba(26,28,23,.97));position:relative;overflow:hidden}
+.hero:after{content:"✦";position:absolute;right:25px;top:5px;font-size:130px;color:#e6bd6512;pointer-events:none}.eyebrow{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}h1{font-size:clamp(32px,6vw,58px);line-height:1.04;max-width:700px;margin:12px 0 16px;letter-spacing:-1.5px}.hero p{color:#d0c8b7;max-width:640px;line-height:1.7;margin:0 0 24px}.btn{border:0;border-radius:12px;padding:13px 18px;font-weight:800;font-size:14px;cursor:pointer;transition:.18s}.btn:hover{transform:translateY(-1px)}.primary{background:var(--gold);color:#201b10}.secondary{background:#292b25;color:var(--cream);border:1px solid #49483d}.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.stat{background:#10110f55;border:1px solid #ffffff12;border-radius:12px;padding:12px 15px;min-width:110px}.stat b{display:block;color:var(--gold);font-size:20px}.stat span{font-size:11px;color:var(--muted)}
+.section-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 0 14px}.section-title h2{margin:0;font-size:21px}.section-title small{color:var(--muted)}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mode{background:var(--panel);border:1px solid #34362e;border-radius:17px;padding:18px}.mode .emoji{font-size:26px}.mode h3{margin:10px 0 6px;font-size:16px}.mode p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+.game{display:none;margin-top:24px;background:var(--panel);border:1px solid #4b432f;border-radius:22px;padding:clamp(18px,4vw,30px)}.game.active{display:block}.game-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.tag{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase}.score{font-size:13px;color:var(--muted)}.progress{height:6px;background:#35372f;border-radius:99px;overflow:hidden;margin:18px 0 26px}.bar{height:100%;width:0;background:var(--gold);transition:width .25s}.question{font-size:clamp(20px,3vw,27px);line-height:1.35;margin:0 0 20px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}.answer{background:#242720;border:1px solid #42443a;border-radius:13px;padding:15px;text-align:left;color:var(--cream);font-size:15px;cursor:pointer;min-height:58px}.answer:hover:not(:disabled){border-color:var(--gold);background:#302d22}.answer:disabled{cursor:default;opacity:1}.answer.correct{border-color:var(--green);background:#203528}.answer.wrong{border-color:var(--red);background:#3b2523}.feedback{margin-top:16px;padding:14px;border-radius:12px;background:#12140f;color:#d9d2c2;line-height:1.55;font-size:14px;display:none}.feedback.show{display:block}.nextrow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px}.hint{font-size:12px;color:var(--muted)}
+.result{text-align:center;padding:20px 0}.result .medal{font-size:54px}.result h2{font-size:32px;margin:8px}.result p{color:var(--muted);line-height:1.6}.result-score{font-size:48px;color:var(--gold);font-weight:900}
+footer{text-align:center;color:#817d71;font-size:12px;margin-top:30px;line-height:1.7}
+@media(max-width:650px){.modes{grid-template-columns:1fr}.answers{grid-template-columns:1fr}.top{align-items:flex-start}.pill{font-size:11px}.wrap{padding-top:16px}.stat{flex:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div class="brand">✦ Ежелгі Еуразия · интерактив</div><div class="pill">Қазақстан тарихы</div></div>
+  <section class="hero" id="intro">
+    <div class="eyebrow">Тарихи детективтер</div>
+    <h1>Жәдігерлер сырын аш!</h1>
+    <p>Сақ-массагет, скиф мәдениеті және антикалық әлем арасындағы байланыстарды зертте. Сұрақтарға жауап бер, тарихи деректерді сәйкестендір және біліміңді тексер.</p>
+    <label for="playerName" style="display:block;color:#d0c8b7;font-size:13px;margin:0 0 8px">Ойыншының немесе топтың атауы</label>
+    <input id="playerName" type="text" maxlength="32" placeholder="Мысалы: 1-топ" style="width:min(100%,380px);padding:13px 14px;border-radius:10px;border:1px solid #655637;background:#171813;color:#f7f0df;font-size:15px;margin:0 0 14px">
+    <button class="btn primary" onclick="startGame()">Ойынды бастау →</button>
+    <div class="stats"><div class="stat"><b>15</b><span>Сұрақ</span></div><div class="stat"><b>3</b><span>Кезең</span></div><div class="stat"><b>150</b><span>Ең көп ұпай</span></div></div>
+  </section>
+
+  <div class="section-title"><h2>Ойын кезеңдері</h2><small>Әр дұрыс жауап — 10 ұпай</small></div>
+  <div class="modes">
+    <div class="mode"><div class="emoji">🔎</div><h3>1. Кім екенін тап?</h3><p>Тарихи тұлғалар мен археологиялық жәдігерлер туралы сұрақтарға жауап бер.</p></div>
+    <div class="mode"><div class="emoji">🧩</div><h3>2. Мәдениетті сәйкестендір</h3><p>Халықтарды, тарихи деректерді және мәдени мұраларды таны.</p></div>
+    <div class="mode"><div class="emoji">⚖️</div><h3>3. Факт па, жалған ба?</h3><p>Тарихи тұжырымдардың дұрыс не бұрыс екенін анықта.</p></div>
+  </div>
+
+  <section class="game" id="game">
+    <div class="game-head"><div class="tag" id="roundLabel">1-кезең · Кім екенін тап?</div><div class="score">Ұпай: <b id="score">0</b> / 120</div></div>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+    <div id="playArea">
+      <h2 class="question" id="question"></h2>
+      <div class="answers" id="answers"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="nextrow"><span class="hint" id="counter">1 / 12 сұрақ</span><button class="btn primary" id="next" onclick="nextQuestion()" disabled>Келесі →</button></div>
+    </div>
+    <div class="result" id="result" style="display:none">
+      <div class="medal" id="medal">🏆</div><h2 id="resultTitle">Жарайсың!</h2><div class="result-score" id="finalScore">0/120</div><p id="resultText"></p><button class="btn primary" onclick="playNextParticipant()">Келесі ойыншы ↻</button>
+      <button class="btn secondary" onclick="window.print()">Нәтижені басып шығару</button>
+    </div>
+  </section>
+  <section class="game active" id="leaderboard" style="margin-top:24px">
+    <div class="game-head"><div class="tag">🏆 Топтардың нәтижесі</div><div class="score">Осы бет ашық тұрған кездегі нәтижелер</div></div>
+    <h2 style="margin-top:18px">Кім қанша ұпай жинады?</h2>
+    <div id="leaderboardContent" style="color:var(--muted);line-height:1.6">Әзірге нәтиже жоқ. Ойын аяқталған соң ойыншының ұпайы осында көрсетіледі.</div>
+    <button class="btn secondary" id="clearScores" onclick="clearLeaderboard()" style="margin-top:14px">Нәтижелерді тазалау</button>
+  </section>
+  <footer>Оқу ойыны · Сақ мәдениеті, Есік қорғаны, Бесшатыр, Берел және ежелгі грек-парсы әлемі туралы.<br>Тарихи ескертпелер қысқаша берілген; ежелгі жазба деректер мен археологиялық дәлелдерді ажыратып қарастыр.</footer>
+</div>
+<script>
+const questions = [
+ {round:0,q:"Қазақстандағы Есік қорғанынан табылған әйгілі жәдігер қалай аталады?",a:["Алтын адам","Розетта тасы","Троя аты","Қанатты бұқа"],c:0,e:"Алтын адам б.з.б. V–IV ғасырларға жатқызылады және сақ дәуірінің зергерлік өнерін танытады."},
+ {round:0,q:"Геродот еңбегінде массагеттердің патшайымы ретінде кім аталады?",a:["Клеопатра","Томирис","Афина","Сапфо"],c:1,e:"Томирис туралы әңгіме Геродоттың «Тарих» еңбегінде кездеседі. Бұл — ежелгі жазба дерек."},
+ {round:0,q:"Сақтар мен скифтердің өнеріне тән белгілі көркемдік дәстүр қайсы?",a:["Готикалық стиль","Барокко","Аң стилі","Импрессионизм"],c:2,e:"Аң стилінде бұғы, барыс, арқар және бүркіт сияқты жануарлар бейнелері жиі қолданылған."},
+ {round:0,q:"Сақтардың бір тобына қарсы жорығы туралы мәлімет қалдырған парсы патшасы кім?",a:["Дарий I","Юлий Цезарь","Перикл","Рамсес II"],c:0,e:"Дарий I-дің Бехистун жазбасында сақтарға қарсы жорық туралы мәлімет бар."},
+ {round:1,q:"Есік қорғаны қай елдің аумағында орналасқан?",a:["Грекия","Қазақстан","Италия","Мысыр"],c:1,e:"Есік қорғаны Алматы облысындағы Жетісу өңірінде орналасқан."},
+ {round:1,q:"Берел қорғандары қандай олжаларымен танымал?",a:["Қағаз кітаптарымен","Рим мозаикаларымен","Жылқы қалдықтары мен ат әбзелдерімен","Мысыр папирустарымен"],c:2,e:"Берел қорғандарынан жылқы қалдықтары мен әшекейлі ат әбзелдері табылған."},
+ {round:1,q:"Бехистун жазбасы қай мемлекет тарихымен байланысты?",a:["Ахемен әулеті билеген Парсы мемлекеті","Ежелгі Рим","Қытайдың Мин әулеті","Византия"],c:0,e:"Бехистун жазбасы Парсы патшасы Дарий I дәуіріндегі көптілді тарихи жазба."},
+ {round:1,q:"Ежелгі гректер мен скифтер арасында қандай байланыс болған?",a:["Ешқандай байланыс болмаған","Тек теңіз соғыстары болған","Тек бір тілде сөйлеген","Сауда және көркемдік байланыстар болған"],c:3,e:"Қара теңіз маңындағы грек қалалары мен скифтер арасында сауда және мәдени байланыстар дамыды."},
+ {round:2,q:"«Сақтар мен скифтер ешбір басқа халықпен байланыс жасамаған».",a:["Факт","Жалған"],c:1,e:"Жалған. Олар парсылармен, гректермен және басқа халықтармен әртүрлі байланыс орнатқан."},
+ {round:2,q:"«Аң стилінде жануарлардың бейнелері жиі қолданылған».",a:["Факт","Жалған"],c:0,e:"Факт. Жануар бейнелері сақ-скиф өнерінің басты белгілерінің бірі."},
+ {round:2,q:"«Бесшатыр қорғандары Ежелгі Грекияда орналасқан».",a:["Факт","Жалған"],c:1,e:"Жалған. Бесшатыр қорғандары Қазақстанның Жетісу өңірінде, Іле өзені аңғарында орналасқан."},
+ {round:2,q:"«Ежелгі грек шеберлері мен көшпелілердің көркемдік дәстүрлері кейбір бұйымдарда тоғысуы мүмкін».",a:["Факт","Жалған"],c:0,e:"Факт. Кейбір археологиялық бұйымдарда грек өнері мен көшпелі мәдениетке тән элементтер қатар кездеседі."},
+ {round:2,q:"«Берел қорғандары Қазақстанның шығысындағы Алтай өңірімен байланысты».",a:["Факт","Жалған"],c:0,e:"Факт. Берел қорғандары Шығыс Қазақстандағы Алтай өңірінде орналасқан."},
+ {round:2,q:"«Сақтардың аң стилі тек жазба кітаптарда ғана кездеседі».",a:["Факт","Жалған"],c:1,e:"Жалған. Аң стилі археологиялық бұйымдарда, әшекейлерде және қару-жарақ бөлшектерінде көрінеді."},
+ {round:2,q:"«Мәдени байланыс тек соғыс арқылы ғана жүзеге асқан».",a:["Факт","Жалған"],c:1,e:"Жалған. Сауда, дипломатия, қолөнер және көркемдік үлгілердің алмасуы да мәдени байланыстың маңызды жолдары болды."}
+];
+const labels=["1-кезең · Кім екенін тап?","2-кезең · Мәдениетті таны","3-кезең · Факт па, жалған ба?"];
+let order=[], index=0, score=0, answered=false;
+let currentPlayer = "Қатысушы";
+let leaderboard = [];
+function startGame(){
+  const enteredName = document.getElementById('playerName').value.trim();
+  currentPlayer = enteredName || ("Қатысушы " + (leaderboard.length + 1));
+  document.getElementById('intro').style.display='none';
+  document.getElementById('game').classList.add('active');
+  restartGame();
+  document.getElementById('game').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function restartGame(){order=questions.map((_,i)=>i);index=0;score=0;answered=false;document.getElementById('playArea').style.display='block';document.getElementById('result').style.display='none';document.getElementById('score').textContent=score;renderQuestion();}
+function renderQuestion(){answered=false;const q=questions[order[index]];document.getElementById('roundLabel').textContent=labels[q.round];document.getElementById('question').textContent=q.q;document.getElementById('counter').textContent=(index+1)+' / '+questions.length+' сұрақ';document.getElementById('bar').style.width=(index/questions.length*100)+'%';document.getElementById('feedback').className='feedback';document.getElementById('feedback').textContent='';document.getElementById('next').disabled=true;document.getElementById('next').textContent=index===questions.length-1?'Нәтижені көру →':'Келесі →';const area=document.getElementById('answers');area.innerHTML='';q.a.forEach((ans,i)=>{const b=document.createElement('button');b.className='answer';b.textContent=String.fromCharCode(65+i)+'. '+ans;b.onclick=()=>chooseAnswer(i,b);area.appendChild(b);});}
+function chooseAnswer(choice,button){if(answered)return;answered=true;const q=questions[order[index]];const buttons=[...document.querySelectorAll('.answer')];buttons.forEach((b,i)=>{b.disabled=true;if(i===q.c)b.classList.add('correct');});const fb=document.getElementById('feedback');if(choice===q.c){score+=10;button.classList.add('correct');fb.innerHTML='<strong style="color:var(--green)">Дұрыс жауап! +10 ұпай</strong><br>'+q.e;}else{button.classList.add('wrong');fb.innerHTML='<strong style="color:var(--red)">Бұл жолы дұрыс емес.</strong><br>'+q.e;}fb.classList.add('show');document.getElementById('score').textContent=score;document.getElementById('bar').style.width=((index+1)/questions.length*100)+'%';document.getElementById('next').disabled=false;}
+function nextQuestion(){if(!answered)return;if(index<questions.length-1){index++;renderQuestion();}else{showResult();}}
+function showResult(){
+  document.getElementById('playArea').style.display='none';
+  document.getElementById('result').style.display='block';
+  document.getElementById('finalScore').textContent=score+'/150';
+  let title,txt,medal;
+  if(score>=120){title='Нағыз тарих білгірі!';txt='Сен ежелгі мәдениеттер мен олардың байланыстары туралы өте жақсы білесің.';medal='🏆';}
+  else if(score>=80){title='Жақсы нәтиже!';txt='Негізгі деректерді білесің. Қате кеткен сұрақтардың түсіндірмесін қайталап көр.';medal='🥇';}
+  else{title='Зерттеуді жалғастыр!';txt='Алтын адам, аң стилі және ежелгі грек-парсы байланыстары туралы презентацияны қайта қарап, тағы ойнап көр.';medal='📜';}
+  document.getElementById('resultTitle').textContent=title;
+  document.getElementById('resultText').textContent=txt;
+  document.getElementById('medal').textContent=medal;
+  document.getElementById('bar').style.width='100%';
+  leaderboard.push({name:currentPlayer, score:score});
+  renderLeaderboard();
+}
+function renderLeaderboard(){
+  const container=document.getElementById('leaderboardContent');
+  if(!leaderboard.length){
+    container.textContent='Әзірге нәтиже жоқ. Ойын аяқталған соң ойыншының ұпайы осында көрсетіледі.';
+    return;
+  }
+  const sorted=[...leaderboard].sort((a,b)=>b.score-a.score);
+  container.innerHTML='';
+  sorted.forEach((entry,i)=>{
+    const row=document.createElement('div');
+    row.style.cssText='display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 14px;margin-top:8px;border:1px solid #3b3d32;border-radius:12px;background:#171813';
+    const name=document.createElement('span');
+    name.textContent=(i===0?'🥇 ':i===1?'🥈 ':i===2?'🥉 ':'')+(i+1)+'. '+entry.name;
+    name.style.cssText='color:#f7f0df;font-weight:700;overflow-wrap:anywhere';
+    const points=document.createElement('strong');
+    points.textContent=entry.score+' / 150 ұпай';
+    points.style.cssText='color:#e6bd65;white-space:nowrap';
+    row.append(name,points);
+    container.appendChild(row);
+  });
+}
+function playNextParticipant(){
+  document.getElementById('game').classList.remove('active');
+  document.getElementById('intro').style.display='block';
+  document.getElementById('playerName').value='';
+  document.getElementById('intro').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function clearLeaderboard(){
+  leaderboard=[];
+  renderLeaderboard();
+}
+</script>
+</body>
+</html>
